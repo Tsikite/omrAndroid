@@ -45,9 +45,12 @@ public class RecognizeActivity extends Activity {
 				Bitmap buffImage = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory()+File.separator+"muzapptest"+File.separator+lastimg.getName());
 				//Bitmap buffImage;
 				buffImage = buffImage.copy(Bitmap.Config.ARGB_8888, true);
+				
+				
+				//TODO: FIX THIS PART. DO THE MONOCHROME BETTER
 				Bitmap bwimage =buffImage;//= new DoBlackandWhite(buffImage).getBW();
 				BitmapConvertor bmc = new BitmapConvertor(this);
-				bmc.convertBitmap(buffImage, "bw");
+				bmc.convertBitmap(buffImage, "bw"); //So this is where it gets stuck. Looking in to it
 				FFT ftransform = new FFT(bwimage,bwimage.getWidth());
 				ftransform.doFFT();
 				float angle = ftransform.getRotationAngle();
